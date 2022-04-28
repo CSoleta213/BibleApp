@@ -1,31 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 
+import books from '../database/Books';
+
 export default class Books extends Component {
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-        bible: [],
-      };
-    }
-  
-    fetchData() {
-      DB.transaction(tx => {
-        tx.executeSql('SELECT * FROM bible', [], (tx, { rows }) => {
-          rows = rows._array ? rows._array : rows;
-          this.setState({bible: rows});
-        });
-      });
-    }
-  
     render() {
       return(
         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', top: 35, bottom: 35 }}>
   
           <FlatList
             style={{ flex: 1, marginTop: 10 }}
-            data={this.state.bible}
+            data={books}
             keyExtractor={item => item.id}
             renderItem={({item}) => {
               return (
