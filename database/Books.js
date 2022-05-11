@@ -1,268 +1,332 @@
-const Books = [
+export const books = [
   {
     id: '1',
-    book: 'Genesis',
+    book_name: 'Genesis',
+    book_type: 'old',
   },
   {
     id: '2',
-    book: 'Exodo'
+    book_name: 'Exodo',
+    book_type: 'old',
   },
   {
     id: '3',
-    book: 'Levitico'
+    book_name: 'Levitico',
+    book_type: 'old',
   },
   {
     id: '4',
-    book: 'Mga Bilang'
+    book_name: 'Bilang',
+    book_type: 'old',
   },
   {
     id: '5',
-    book: 'Deuteronomio'
+    book_name: 'Deuteronomio',
+    book_type: 'old',
   },
   {
     id: '6',
-    book: 'Josue'
+    book_name: 'Josue',
+    book_type: 'old',
   },
   {
     id: '7',
-    book: 'Mga Hukom'
+    book_name: 'Hukom',
+    book_type: 'old',
   },
   {
     id: '8',
-    book: 'Ruth'
+    book_name: 'Ruth',
+    book_type: 'old',
   },
   {
     id: '9',
-    book: 'I Samuel'
+    book_name: 'I Samuel',
+    book_type: 'old',
   },
   {
     id: '10',
-    book: ''
+    book_name: 'II Samuel',
+    book_type: 'old',
   },
   {
     id: '11',
-    book: 'II Samuel'
+    book_name: 'I Hari',
+    book_type: 'old',
   },  
   {
     id: '12',
-    book: 'I Hari'
+    book_name: 'II Hari',
+    book_type: 'old',
   },
   {
     id: '13',
-    book: 'II Hari'
+    book_name: 'I Cronica',
+    book_type: 'old',
   },
   {
     id: '14',
-    book: 'I Cronica'
+    book_name: 'II Cronica',
+    book_type: 'old',
   },
   {
     id: '15',
-    book: 'II Cronica'
+    book_name: 'Ezra',
+    book_type: 'old',
   },
   {
     id: '16',
-    book: 'Ezra'
+    book_name: 'Nehemias',
+    book_type: 'old',
   },
   {
     id: '17',
-    book: 'Nehemias'
+    book_name: 'Esther',
+    book_type: 'old',
   },
   {
     id: '18',
-    book: 'Esther'
+    book_name: 'Job',
+    book_type: 'old',
   },
   {
     id: '19',
-    book: 'Job'
+    book_name: 'Awit',
+    book_type: 'old',
   },
   {
     id: '20',
-    book: 'Mga Awit'
+    book_name: 'Kawikaan',
+    book_type: 'old',
   },
   {
     id: '21',
-    book: 'Kawikaan'
+    book_name: 'Eclesiastes',
+    book_type: 'old',
   },
   {
     id: '22',
-    book: 'Eclesiastes'
+    book_name: 'Awit Ng Mga Awit',
+    book_type: 'old',
   },
   {
     id: '23',
-    book: 'Awit ng mga Awit'
+    book_name: 'Isaias',
+    book_type: 'old',
   },
   {
     id: '24',
-    book: 'Isaias'
+    book_name: 'Jeremias',
+    book_type: 'old',
   },
   {
     id: '25',
-    book: 'Jeremias'
+    book_name: 'Panaghoy',
+    book_type: 'old',
   },
   {
     id: '26',
-    book: 'Panaghoy'
+    book_name: 'Ezekiel',
+    book_type: 'old',
   },
   {
     id: '27',
-    book: 'Ezekiel'
+    book_name: 'Daniel',
+    book_type: 'old',
   },
   {
     id: '28',
-    book: 'Daniel'
+    book_name: 'Oseas',
+    book_type: 'old',
   },
   {
     id: '29',
-    book: 'Oseas'
+    book_name: 'Joel',
+    book_type: 'old',
   },
   {
     id: '30',
-    book: 'Joel'
+    book_name: 'Amos',
+    book_type: 'old',
   },
   {
     id: '31',
-    book: 'Amos'
+    book_name: 'Obadias',
+    book_type: 'old',
   },
   {
     id: '32',
-    book: 'Obadias'
+    book_name: 'Jonas',
+    book_type: 'old',
   },
   {
     id: '33',
-    book: 'Jonas'
+    book_name: 'Mikas',
+    book_type: 'old',
   },
   {
     id: '34',
-    book: 'Mikas'
+    book_name: 'Nahum',
+    book_type: 'old',
   },
   {
     id: '35',
-    book: 'Nahum'
+    book_name: 'Habacuc',
+    book_type: 'old',
   },
   {
     id: '36',
-    book: 'Habacuc'
+    book_name: 'Zefanias',
+    book_type: 'old',
   },
   {
     id: '37',
-    book: 'Zefanias'
+    book_name: 'Hagai',
+    book_type: 'old',
   },
   {
     id: '38',
-    book: 'Hagai'
+    book_name: 'Zacarias',
+    book_type: 'old',
   },
   {
     id: '39',
-    book: 'Zacarias'
+    book_name: 'Malakias',
+    book_type: 'old',
   },
   {
     id: '40',
-    book: 'Malakias'
+    book_name: 'Mateo',
+    book_type: 'new',
   },
   {
     id: '41',
-    book: 'Mateo'
+    book_name: 'Marcos',
+    book_type: 'new',
   },
   {
     id: '42',
-    book: 'Marcos'
+    book_name: 'Lucas',
+    book_type: 'new',
   },
   {
     id: '43',
-    book: 'Lucas'
+    book_name: 'Juan',
+    book_type: 'new',
   },
   {
     id: '44',
-    book: 'Juan'
+    book_name: 'Gawa',
+    book_type: 'new',
   },
   {
     id: '45',
-    book: 'Gawa'
+    book_name: 'Roma',
+    book_type: 'new',
   },
   {
     id: '46',
-    book: 'Roma'
+    book_name: 'I Corinto',
+    book_type: 'new',
   },
   {
     id: '47',
-    book: 'I Corinto'
+    book_name: 'II Corinto',
+    book_type: 'new',
   },
   {
     id: '48',
-    book: 'II Corinto'
+    book_name: 'Galacia',
+    book_type: 'new',
   },
   {
     id: '49',
-    book: 'Galacia'
+    book_name: 'Efeso',
+    book_type: 'new',
   },
   {
     id: '50',
-    book: 'Efeso'
+    book_name: 'Filipos',
+    book_type: 'new',
   },
   {
     id: '51',
-    book: 'Filipos'
+    book_name: 'Colosas',
+    book_type: 'new',
   },
   {
     id: '52',
-    book: 'Colosas'
+    book_name: 'I Tesalonica',
+    book_type: 'new',
   },
   {
     id: '53',
-    book: 'I Tesalonica'
+    book_name: 'II Tesalonica',
+    book_type: 'new',
   },
   {
     id: '54',
-    book: 'II Tesalonica'
+    book_name: 'I Timoteo',
+    book_type: 'new',
   },
   {
     id: '55',
-    book: 'I Timoteo'
+    book_name: 'II Timoteo',
+    book_type: 'new',
   },
   {
     id: '56',
-    book: 'II Timoteo'
+    book_name: 'Tito',
+    book_type: 'new',
   },
   {
     id: '57',
-    book: 'Tito'
+    book_name: 'Filemon',
+    book_type: 'new',
   },
   {
     id: '58',
-    book: 'Filemon'
+    book_name: 'Hebreo',
+    book_type: 'new',
   },
   {
     id: '59',
-    book: 'Hebreo'
+    book_name: 'Santiago',
+    book_type: 'new',
   },
   {
     id: '60',
-    book: 'Santiago'
+    book_name: 'I Pedro',
+    book_type: 'new',
   },
   {
     id: '61',
-    book: 'I Pedro'
+    book_name: 'II Pedro',
+    book_type: 'new',
   },
   {
     id: '62',
-    book: 'II Pedro'
+    book_name: 'I Juan',
+    book_type: 'new',
   },
   {
     id: '63',
-    book: 'I Juan'
+    book_name: 'II Juan',
+    book_type: 'new',
   },
   {
     id: '64',
-    book: 'II Juan'
+    book_name: 'III Juan',
+    book_type: 'new',
   },
   {
     id: '65',
-    book: 'Judas'
+    book_name: 'Judas',
+    book_type: 'new',
   },
   {
     id: '66',
-    book: 'Apocalipsis'
+    book_name: 'Apocalipsis',
+    book_type: 'new',
   },
 ];
-
-export default Books;

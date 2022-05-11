@@ -13,6 +13,7 @@ import AddNote from './screens/AddNote';
 import Read from './screens/Read';
 import Books from './screens/Books';
 import Settings from './screens/Settings';
+import HomeTemp from './Home';
 
 import * as SQLite from 'expo-sqlite';
 const DB = SQLite.openDatabase('db.db');
@@ -49,6 +50,7 @@ export default class App extends Component {
     return(
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {/* <Stack.Screen name='HomeTemp' component={HomeTemp} /> */}
           <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='Note' component={Note} />
           <Stack.Screen name='AddNote' component={AddNote} />

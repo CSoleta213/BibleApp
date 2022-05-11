@@ -3,9 +3,22 @@ import { View, ScrollView, Text, TouchableOpacity, StyleSheet, FlatList } from '
 
 import { MaterialIcons } from '@expo/vector-icons';
 
-import tagab from "../database/TAGAB";
+import { verses } from "../database/Tagab";
 
 export default class Read extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      verses: [],
+    };
+  }
+
+  componentDidMount() {
+    let filterVerses = verses.filter(verse => verse.book_name == "Genesis" && verse.chapter == 1)
+    this.setState({verses: filterVerses})
+  }
+
   render() {
     return(
       <View style={{ flex: 1, top: 35, bottom: 35 }}>
@@ -45,21 +58,22 @@ export default class Read extends Component {
   
         {/* C O N T E N T */}
         <View style={{ flex: 1, padding: 10, paddingHorizontal: 15 }}>
-          <ScrollView style={{ marginBottom: 40 }}>
-            <FlatList
-              style={{ flex: 1, marginTop: 10 }}
-              data={tagab}
-              keyExtractor={(item) => item.id}
-              renderItem={({ item }) => {
-                return (
-                  <View style={{ flexDirection: 'row', padding: 10, marginBottom: 5, backgroundColor: '#f8f9fa' }}>
-                    <Text style={{ paddingVertical: 5, color: 'red' }}>{item.verse}</Text>
-                    <Text style={{ paddingVertical: 5, paddingHorizontal: 10 }}>{item.content}</Text>
-                  </View>
-                );
-              }}
-            />
-          </ScrollView>
+          <FlatList
+            style={{ flex: 1, marginBottom: 30 }}
+            vetical
+            // numColumns={2}
+            showsVerticalScrollIndicator={false}
+            data={this.state.verses}
+            keyExtractor={(item) => item.book_name + item.text}
+            renderItem={({ item, book_name }) => {
+              return (
+                <View style={{ flexDirection: 'row', padding: 10, marginBottom: 5, backgroundColor: '#f8f9fa' }}>
+                  <Text style={{ paddingVertical: 5, color: 'red' }}>{item.verse}</Text>
+                  <Text style={{ paddingVertical: 5, paddingHorizontal: 10 }}>{item.text}</Text>
+                </View>
+              );
+            }}
+          />
         </View>
       </View>
     );
