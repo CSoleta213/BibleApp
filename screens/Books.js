@@ -38,17 +38,6 @@ export default class Books extends Component {
     this.setState({oldBooks: filterOldBooks, newBooks: filterNewBooks})
   }
 
-  // formatData = (books, numColumns) => {
-  //   const totalRows = Math.floor(books.length / numColumns)
-  //   let totalLastRow = books.length - (totalRows * numColumns)
-
-  //   while (totalLastRow !== 0 && totalLastRow !== numColumns) {
-  //     books.push({book_name: 'blank', empty: true})
-  //     totalLastRow++
-  //   }
-  //   return books
-  // }
-
     render() {
       
       let mode = this.state.mode;
