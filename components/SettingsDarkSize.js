@@ -78,46 +78,7 @@ class Settings extends Component {
             this.setState({mode:'lightmode'});
             }}
           />
-        </View>   
-        {/* <View style={{marginTop: 10}}>
-          <Button 
-          title="Set Mode to Noon"
-          onPress={async () => {
-            await AsyncStorage.setItem("mode", 'moodMRN');
-            this.setState({mode:'moodMRN'});
-            }}
-          />
         </View>
-
-        <View style={{marginTop: 10}}>
-          <Button 
-          title="Set Mode to Dawn"
-          onPress={async () => {
-            await AsyncStorage.setItem("mode", 'moodNN');
-            this.setState({mode:'moodNN'});
-            }}
-          />
-        </View>
-
-        <View style={{marginTop: 10}}>
-          <Button 
-          title="Set Mode to Dawn"
-          onPress={async () => {
-            await AsyncStorage.setItem("mode", 'moodSS');
-            this.setState({mode:'moodSS'});
-            }}
-          />
-        </View>
-
-        <View style={{marginTop: 10}}>
-          <Button 
-          title="Set Mode to Dawn"
-          onPress={async () => {
-            await AsyncStorage.setItem("mode", 'moodNHT');
-            this.setState({mode:'moodNHT'});
-            }}
-          />
-        </View> */}
       </View>
     );
   }
