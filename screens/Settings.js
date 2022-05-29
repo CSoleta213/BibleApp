@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
+import SettingsDarkSize from '../components/SettingsDarkSize';
 
 export default class Settings extends Component {
   render() {
@@ -28,8 +29,8 @@ export default class Settings extends Component {
           </View>
         </View>
         {/* C O N T E N T */}
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Hello, I am a settings page!</Text>
+        <View style={{ flex: 1}}>
+          <SettingsDarkSize />
         </View>
         {/* B O T T O M  N A V */}
         <View style={styles.container}>
@@ -44,7 +45,7 @@ export default class Settings extends Component {
 
           <TouchableOpacity
             onPress={() =>
-              this.props.navigation.navigate('Read')
+              this.props.navigation.navigate('Books')
             }
             style={styles.bottomNavCircle}
           >

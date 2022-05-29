@@ -11,7 +11,7 @@ export default class Home extends Component {
       <View style={{ flex: 1, top: 35, bottom: 35 }}>
         {/* C O N T E N T */}
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <ImageBackground source={require('../assets/home-sample.png')} style={{width: '100%', height: '100%'}}></ImageBackground>
+          <ImageBackground source={require('../assets/home-bg-ss.png')} style={{width: '100%', height: '100%'}}></ImageBackground>
         </View>
         {/* B O T T O M  N A V */}
         <View style={styles.container}>
@@ -26,7 +26,7 @@ export default class Home extends Component {
 
           <TouchableOpacity
             onPress={() =>
-              this.props.navigation.navigate('Read')
+              this.props.navigation.navigate('Books')
             }
             style={styles.bottomNavCircle}
           >

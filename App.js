@@ -10,8 +10,9 @@ import { getStorage, setStorage } from './helper/storage';
 import Home from './screens/Home';
 import Note from './screens/Note';
 import AddNote from './screens/AddNote';
-import Read from './screens/Read';
 import Books from './screens/Books';
+import Chapter from './screens/Chapters';
+import Read from './screens/Read';
 import Settings from './screens/Settings';
 import HomeTemp from './Home';
 
@@ -54,8 +55,9 @@ export default class App extends Component {
           <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='Note' component={Note} />
           <Stack.Screen name='AddNote' component={AddNote} />
-          <Stack.Screen name='Read' component={Read} />
           <Stack.Screen name='Books' component={Books} />
+          <Stack.Screen name='Chapter' component={Chapter} />
+          <Stack.Screen name='Read' component={Read} />
           <Stack.Screen name='Settings' component={Settings} />
         </Stack.Navigator>
       </NavigationContainer>

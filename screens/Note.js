@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, Alert } from 'react-native';
 
+import Mode from "../assets/style";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import * as SQLite from 'expo-sqlite';
 const DB = SQLite.openDatabase('db.db');
 
@@ -20,8 +23,14 @@ export default class Note extends Component {
 
   componentDidMount() {
     if (!this.state.notes.length) {
-      this.fetchData();
+      this.fetchData()
+      this.loaddefaultmode()
     }
+  }
+
+  async loaddefaultmode() {
+    let mode = await AsyncStorage.getItem("mode");
+    this.setState({mode})
   }
 
   componentDidUpdate() {
@@ -61,10 +70,19 @@ export default class Note extends Component {
   }
 
   render() {
+    let mode = this.state.mode;
+     let modeStyle = Mode[mode] ? Mode[mode] : Mode ['lightmode'];
     return(
-      <View style={{ flex: 1, top: 35, bottom: 35 }}>
+      <View style={{ flex: 1, top: 35, bottom: 35, backgroundColor: modeStyle.backgroundColor }}>
         {/* H E A D E R */}
-        <View style={styles.headerNavContainer}>
+        <View style={{
+          height: 50,
+          width: "100%",
+          backgroundColor: "#0a090d",
+          flexDirection: "row",
+          alignItems: "center",
+          backgroundColor: modeStyle.header,
+        }}>
           <View style={{ flex: 1 }}>
             <TouchableOpacity
               style={{ alignSelf: 'center'}}
@@ -76,7 +94,7 @@ export default class Note extends Component {
             </TouchableOpacity>
           </View>
           <View style={{ flex: 5 }}>
-            <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>Notes</Text>
+            <Text style={{ color: modeStyle.color, fontSize: 18, fontWeight: 'bold' }}>My Notes</Text>
           </View>
           <View style={{ flex: 2 }}>
             <TouchableOpacity
@@ -92,35 +110,36 @@ export default class Note extends Component {
         </View>
         
         {/* C O N T E N T */}
-        <FlatList
-          style={{ flex: 1, marginTop: 10 }}
-          data={this.state.notes}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => {
-            return (
-              <View style={{ backgroundColor: '#f8f9fa', marginBottom: 5, padding: 10, flexDirection: 'row', alignItems: 'center' }}>
-                <Text style={{ flex: 2, fontWeight: 'bold' }}>{item.title}</Text>
-                <Text style={{ flex: 3 }}>{item.description}</Text>
-                <TouchableOpacity
-                  style={{ backgroundColor: '#00008B', width: 60, marginHorizontal: 5, paddingVertical: 5, paddingHorizontal: 10, borderRadius: 10 }}
-                  onPress={() => {
-                    this.props.navigation.navigate('AddNote', item)
-                  }}
-                >
-                  <Text style={{ color: '#FFFFFF', textAlign: 'center' }}>Edit</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{ backgroundColor: '#C70000', width: 60, marginHorizontal: 5, paddingVertical: 5, paddingHorizontal: 10, borderRadius: 10 }}
-                  onPress={() => {
-                    this.deleteNote(item.id)
-                  }}
-                >
-                  <Text style={{ color: '#FFFFFF', textAlign: 'center' }}>Delete</Text>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-        />
+        <View style={{ flex: 1, padding: 10, paddingHorizontal: 15 }}>
+          <FlatList
+            style={{ flex: 1, marginTop: 5 }}
+            data={this.state.notes}
+            keyExtractor={item => item.id}
+            renderItem={({item}) => {
+              return (
+                <View style={{ backgroundColor: modeStyle.button, marginBottom: 5, padding: 10, flexDirection: 'row', alignItems: 'center', borderRadius: 10, }}>
+                  <TouchableOpacity
+                    style={{ flex: 1, flexDirection: 'row', }}
+                    onPress={() => {
+                      this.props.navigation.navigate('AddNote', item)
+                    }}
+                  >
+                    <Text style={{ flex: 2, fontWeight: 'bold', color: modeStyle.color }}>{item.title}</Text>
+                    <Text style={{ flex: 3, color: modeStyle.color }}>{item.description}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={{ width: 40, paddingVertical: 5, borderRadius: 10 }}
+                    onPress={() => {
+                      this.deleteNote(item.id)
+                    }}
+                  >
+                    <Text style={{ textAlign: 'center' }}><FontAwesome name="trash-o" size={24} color="#C70000" /></Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            }}
+          />
+        </View>
         {/* B O T T O M  N A V */}
         <View style={styles.container}>
         
@@ -134,7 +153,7 @@ export default class Note extends Component {
 
           <TouchableOpacity
             onPress={() =>
-              this.props.navigation.navigate('Read')
+              this.props.navigation.navigate('Books')
             }
             style={styles.bottomNavCircle}
           >

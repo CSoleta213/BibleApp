@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
+import Mode from "../assets/style";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { MaterialIcons } from '@expo/vector-icons'; 
 
 import * as SQLite from 'expo-sqlite';
@@ -14,7 +17,7 @@ export default class AddNote extends Component {
         id: null,
         title: '',
         description: '',
-        content: ''
+        content: '',
       }
     }
   
@@ -23,6 +26,12 @@ export default class AddNote extends Component {
       if (params && this.state.id != params.id) {
         this.setUpdatingData(params);
       }
+      this.loaddefaultmode()
+    }
+
+    async loaddefaultmode() {
+      let mode = await AsyncStorage.getItem("mode");
+      this.setState({mode})
     }
   
     setUpdatingData(params) {
@@ -53,10 +62,21 @@ export default class AddNote extends Component {
     }
   
     render() {
+
+      let mode = this.state.mode;
+     let modeStyle = Mode[mode] ? Mode[mode] : Mode ['lightmode'];
+
       return(
-        <View style={{ flex: 1, top: 35, bottom: 35 }}>
+        <View style={{ flex: 1, top: 35, bottom: 35, backgroundColor: modeStyle.backgroundColor }}>
           {/* H E A D E R */}
-          <View style={styles.headerNavContainer}>
+          <View style={{
+            height: 50,
+            width: "100%",
+            backgroundColor: modeStyle.header,
+            flexDirection: "row",
+            alignItems: "center",
+
+          }}>
             <View style={{ flex: 1 }}>
               <TouchableOpacity
                 style={{ alignSelf: 'center'}}
@@ -68,7 +88,7 @@ export default class AddNote extends Component {
               </TouchableOpacity>
             </View>
             <View style={{ flex: 6 }}>
-              <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: 'bold' }}>{this.state.title}</Text>
+              <Text style={{ color: modeStyle.color, fontSize: 18, fontWeight: 'bold' }}>{this.state.title}</Text>
             </View>
             <View style={{ flex: 1 }}>
               <TouchableOpacity
@@ -94,6 +114,8 @@ export default class AddNote extends Component {
                 textAlign: 'center',
                 fontWeight: 'bold',
                 fontSize: 18,
+                color: modeStyle.color,
+                borderColor: modeStyle.color,
               }}
               onChangeText={text => this.setState({title: text})}
               value={this.state.title}
@@ -110,6 +132,8 @@ export default class AddNote extends Component {
                 paddingVertical: 6,
                 textAlign: 'center',
                 fontWeight: 'bold',
+                color: modeStyle.color,
+                borderColor: modeStyle.color,
               }}
               onChangeText={text => this.setState({description: text})}
               value={this.state.description}
@@ -126,6 +150,8 @@ export default class AddNote extends Component {
                 paddingHorizontal: 8,
                 paddingVertical: 6,
                 textAlignVertical: 'top',
+                color: modeStyle.color,
+                borderColor: modeStyle.color,
               }}
               onChangeText={text => this.setState({content: text})}
               value={this.state.content}
